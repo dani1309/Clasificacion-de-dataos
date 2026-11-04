@@ -1,7 +1,7 @@
 # 💳 Proyecto Final de Minería de Datos, Metodología CRISP-DM
 ## Predicción de Abandono de Clientes de Tarjetas de Crédito (*Credit Card Churn*)
 
-Este repositorio contiene el desarrollo integral del **Proyecto Final de Minería de Datos**, aplicando todas las fases de la metodología **CRISP-DM** sobre el conjunto de datos real de abandono bancario (`credit_card_churn.csv`, 10,127 registros y 23 variables originales).
+Este repositorio contiene el desarrollo integral del **Proyecto Final de Minería de Datos**, aplicando todas las fases de la metodología CRISP-DM sobre el conjunto de datos real de abandono bancario (`credit_card_churn.csv`, 10,127 registros y 23 variables originales).
 
 ---
 
