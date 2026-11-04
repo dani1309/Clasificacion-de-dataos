@@ -10,13 +10,6 @@ st.set_page_config(
     layout="wide"
 )
 
-def add_engineered_features(data: pd.DataFrame) -> pd.DataFrame:
-    d = data.copy()
-    d['Avg_Ticket_Size'] = d['Total_Trans_Amt'] / np.maximum(d['Total_Trans_Ct'], 1)
-    d['Inactivity_Contact_Ratio'] = d['Months_Inactive_12_mon'] * d['Contacts_Count_12_mon']
-    d['Products_Per_Year'] = d['Total_Relationship_Count'] / (d['Months_on_book'] / 12.0)
-    return d
-
 @st.cache_resource
 def load_model():
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -118,9 +111,10 @@ with tab1:
             "Avg_Utilization_Ratio": avg_util_ratio
         }])
 
-        input_fe = add_engineered_features(input_df)
-        pred_class = int(pipeline.predict(input_fe)[0])
-        pred_prob = float(pipeline.predict_proba(input_fe)[0, 1])
+        pred_class = int(pipeline.predict(input_df)[0])
+        pred_prob = float(pipeline.predict_proba(input_df)[0, 1])
+        # Los tres primeros pasos del Pipeline dejan los datos con las variables de ingeniería
+        input_fe = pipeline[:3].transform(input_df)
 
         st.divider()
         r1, r2 = st.columns([1, 2])
@@ -153,7 +147,7 @@ with tab1:
 
 with tab2:
     st.subheader("Carga de Archivo CSV para Predicción por Lote")
-    st.markdown("Suba un archivo CSV con las columnas del dataset limpio (`credit_card_churn_limpio.csv`) para obtener las predicciones masivas.")
+    st.markdown("Suba un archivo CSV con las 18 predictoras crudas, por ejemplo `credit_card_churn.csv`, para obtener las predicciones masivas. Los valores `Unknown` se imputan dentro del `Pipeline`.")
     uploaded_file = st.file_uploader("Seleccione un archivo CSV", type=["csv"])
     if uploaded_file is not None:
         batch_df = pd.read_csv(uploaded_file)
@@ -162,9 +156,8 @@ with tab2:
         if missing_c:
             st.error(f"Faltan las siguientes columnas requeridas en el CSV: {missing_c}")
         else:
-            batch_fe = add_engineered_features(batch_df[raw_cols])
-            batch_preds = pipeline.predict(batch_fe)
-            batch_probs = pipeline.predict_proba(batch_fe)[:, 1]
+            batch_preds = pipeline.predict(batch_df[raw_cols])
+            batch_probs = pipeline.predict_proba(batch_df[raw_cols])[:, 1]
             res_df = batch_df.copy()
             res_df["Prediccion_Churn"] = np.where(batch_preds == 1, "Attrited Customer", "Existing Customer")
             res_df["Probabilidad_Churn"] = np.round(batch_probs, 4)

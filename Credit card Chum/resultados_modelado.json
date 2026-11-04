@@ -7,7 +7,7 @@
       "Recall (Media ± DE)": "0.9077 ± 0.0193",
       "F1-Score (Media ± DE)": "0.9010 ± 0.0075",
       "ROC-AUC (Media ± DE)": "0.9923 ± 0.0015",
-      "Tiempo (s)": 2.54
+      "Tiempo (s)": 1.73
     },
     {
       "Modelo": "7. Stacking (Ensamble)",
@@ -16,7 +16,7 @@
       "Recall (Media ± DE)": "0.8911 ± 0.0269",
       "F1-Score (Media ± DE)": "0.8898 ± 0.0068",
       "ROC-AUC (Media ± DE)": "0.9901 ± 0.0016",
-      "Tiempo (s)": 19.49
+      "Tiempo (s)": 14.06
     },
     {
       "Modelo": "5. Random Forest - Bagging (Ensamble)",
@@ -25,7 +25,7 @@
       "Recall (Media ± DE)": "0.8840 ± 0.0329",
       "F1-Score (Media ± DE)": "0.8803 ± 0.0152",
       "ROC-AUC (Media ± DE)": "0.9884 ± 0.0015",
-      "Tiempo (s)": 5.78
+      "Tiempo (s)": 3.84
     },
     {
       "Modelo": "3. Red Neuronal (Supervisado)",
@@ -34,7 +34,7 @@
       "Recall (Media ± DE)": "0.8568 ± 0.0283",
       "F1-Score (Media ± DE)": "0.8092 ± 0.0182",
       "ROC-AUC (Media ± DE)": "0.9733 ± 0.0052",
-      "Tiempo (s)": 11.42
+      "Tiempo (s)": 11.31
     },
     {
       "Modelo": "1. Árbol de Decisión (Supervisado)",
@@ -43,7 +43,7 @@
       "Recall (Media ± DE)": "0.8674 ± 0.0328",
       "F1-Score (Media ± DE)": "0.8060 ± 0.0218",
       "ROC-AUC (Media ± DE)": "0.9349 ± 0.0172",
-      "Tiempo (s)": 1.43
+      "Tiempo (s)": 1.33
     },
     {
       "Modelo": "4. SVM (Supervisado)",
@@ -52,7 +52,7 @@
       "Recall (Media ± DE)": "0.8849 ± 0.0236",
       "F1-Score (Media ± DE)": "0.7801 ± 0.0261",
       "ROC-AUC (Media ± DE)": "0.9666 ± 0.0074",
-      "Tiempo (s)": 52.65
+      "Tiempo (s)": 41.44
     },
     {
       "Modelo": "2. KNN (Supervisado)",
@@ -61,67 +61,408 @@
       "Recall (Media ± DE)": "0.8797 ± 0.0261",
       "F1-Score (Media ± DE)": "0.6819 ± 0.0254",
       "ROC-AUC (Media ± DE)": "0.9353 ± 0.0105",
-      "Tiempo (s)": 1.29
+      "Tiempo (s)": 0.88
     }
   ],
   "anova_f": 153.192,
   "anova_p": "1.2757e-35",
+  "tukey": [
+    {
+      "Modelo A": "1. Árbol de Decisión",
+      "Modelo B": "2. KNN",
+      "Diferencia F1 (B - A)": -0.1241,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "1. Árbol de Decisión",
+      "Modelo B": "3. Red Neuronal",
+      "Diferencia F1 (B - A)": 0.0032,
+      "p-adj": 0.99981,
+      "Significativa": false
+    },
+    {
+      "Modelo A": "1. Árbol de Decisión",
+      "Modelo B": "4. SVM",
+      "Diferencia F1 (B - A)": -0.0259,
+      "p-adj": 0.06715,
+      "Significativa": false
+    },
+    {
+      "Modelo A": "1. Árbol de Decisión",
+      "Modelo B": "5. Random Forest - Bagging",
+      "Diferencia F1 (B - A)": 0.0743,
+      "p-adj": 1.5387e-10,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "1. Árbol de Decisión",
+      "Modelo B": "6. XGBoost - Boosting",
+      "Diferencia F1 (B - A)": 0.095,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "1. Árbol de Decisión",
+      "Modelo B": "7. Stacking",
+      "Diferencia F1 (B - A)": 0.0838,
+      "p-adj": 2.1309e-12,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "2. KNN",
+      "Modelo B": "3. Red Neuronal",
+      "Diferencia F1 (B - A)": 0.1273,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "2. KNN",
+      "Modelo B": "4. SVM",
+      "Diferencia F1 (B - A)": 0.0982,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "2. KNN",
+      "Modelo B": "5. Random Forest - Bagging",
+      "Diferencia F1 (B - A)": 0.1984,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "2. KNN",
+      "Modelo B": "6. XGBoost - Boosting",
+      "Diferencia F1 (B - A)": 0.2191,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "2. KNN",
+      "Modelo B": "7. Stacking",
+      "Diferencia F1 (B - A)": 0.2079,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "3. Red Neuronal",
+      "Modelo B": "4. SVM",
+      "Diferencia F1 (B - A)": -0.0291,
+      "p-adj": 0.025924,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "3. Red Neuronal",
+      "Modelo B": "5. Random Forest - Bagging",
+      "Diferencia F1 (B - A)": 0.0711,
+      "p-adj": 6.6111e-10,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "3. Red Neuronal",
+      "Modelo B": "6. XGBoost - Boosting",
+      "Diferencia F1 (B - A)": 0.0918,
+      "p-adj": 2.7089e-14,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "3. Red Neuronal",
+      "Modelo B": "7. Stacking",
+      "Diferencia F1 (B - A)": 0.0806,
+      "p-adj": 9.0874e-12,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "4. SVM",
+      "Modelo B": "5. Random Forest - Bagging",
+      "Diferencia F1 (B - A)": 0.1002,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "4. SVM",
+      "Modelo B": "6. XGBoost - Boosting",
+      "Diferencia F1 (B - A)": 0.1209,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "4. SVM",
+      "Modelo B": "7. Stacking",
+      "Diferencia F1 (B - A)": 0.1097,
+      "p-adj": 0.0,
+      "Significativa": true
+    },
+    {
+      "Modelo A": "5. Random Forest - Bagging",
+      "Modelo B": "6. XGBoost - Boosting",
+      "Diferencia F1 (B - A)": 0.0207,
+      "p-adj": 0.24426,
+      "Significativa": false
+    },
+    {
+      "Modelo A": "5. Random Forest - Bagging",
+      "Modelo B": "7. Stacking",
+      "Diferencia F1 (B - A)": 0.0095,
+      "p-adj": 0.93455,
+      "Significativa": false
+    },
+    {
+      "Modelo A": "6. XGBoost - Boosting",
+      "Modelo B": "7. Stacking",
+      "Diferencia F1 (B - A)": -0.0112,
+      "p-adj": 0.86515,
+      "Significativa": false
+    }
+  ],
   "tuning": [
     {
       "Modelo": "XGBoost (Boosting)",
       "Método de Optimización": "Optimización Bayesiana (Optuna TPE)",
-      "Mejor F1-Score (CV)": 0.9114,
-      "Mejores Hiperparámetros": "{'n_estimators': 300, 'max_depth': 4, 'learning_rate': 0.1014, 'subsample': 0.8685, 'colsample_bytree': 0.7116}",
-      "Tiempo (s)": 12.0
+      "Mejor F1-Score (CV)": 0.9129,
+      "Mejores Hiperparámetros": "{'n_estimators': 300, 'max_depth': 5, 'learning_rate': 0.1266, 'subsample': 0.9278, 'colsample_bytree': 0.7052}",
+      "Tiempo (s)": 32.66
     },
     {
       "Modelo": "XGBoost (Boosting)",
       "Método de Optimización": "GridSearchCV",
-      "Mejor F1-Score (CV)": 0.907,
-      "Mejores Hiperparámetros": "{'n_estimators': 250, 'max_depth': 5, 'learning_rate': 0.1, 'subsample': 0.85}",
-      "Tiempo (s)": 8.99
+      "Mejor F1-Score (CV)": 0.91,
+      "Mejores Hiperparámetros": "{'learning_rate': 0.1, 'max_depth': 5, 'n_estimators': 250, 'subsample': 0.85}",
+      "Tiempo (s)": 17.36
+    },
+    {
+      "Modelo": "XGBoost (Boosting)",
+      "Método de Optimización": "Línea base (comparación inicial)",
+      "Mejor F1-Score (CV)": 0.901,
+      "Mejores Hiperparámetros": "{'n_estimators': 150, 'max_depth': 5, 'learning_rate': 0.1}",
+      "Tiempo (s)": 1.73
+    },
+    {
+      "Modelo": "Stacking (Ensamble)",
+      "Método de Optimización": "GridSearchCV",
+      "Mejor F1-Score (CV)": 0.8936,
+      "Mejores Hiperparámetros": "{'final_estimator__C': 0.5, 'xgb__max_depth': 5}",
+      "Tiempo (s)": 58.12
     },
     {
       "Modelo": "Stacking (Ensamble)",
       "Método de Optimización": "Optimización Bayesiana (Optuna TPE)",
-      "Mejor F1-Score (CV)": 0.8943,
-      "Mejores Hiperparámetros": "{'final_estimator__C': 0.7135, 'rf_n_estimators': 100, 'xgb_max_depth': 5}",
-      "Tiempo (s)": 62.64
+      "Mejor F1-Score (CV)": 0.8927,
+      "Mejores Hiperparámetros": "{'final_estimator__C': 0.5906, 'rf__n_estimators': 100, 'xgb__max_depth': 5}",
+      "Tiempo (s)": 158.19
     },
     {
       "Modelo": "Stacking (Ensamble)",
-      "Método de Optimización": "GridSearchCV",
-      "Mejor F1-Score (CV)": 0.893,
-      "Mejores Hiperparámetros": "{'final_estimator__C': 1.0, 'rf_n': 100, 'xgb_d': 6}",
-      "Tiempo (s)": 108.12
+      "Método de Optimización": "Línea base (comparación inicial)",
+      "Mejor F1-Score (CV)": 0.8898,
+      "Mejores Hiperparámetros": "{'final_estimator__C': 1.0, 'rf__n_estimators': 100, 'xgb__max_depth': 5}",
+      "Tiempo (s)": 14.06
     },
     {
       "Modelo": "Random Forest (Bagging)",
-      "Método de Optimización": "GridSearchCV",
-      "Mejor F1-Score (CV)": 0.877,
+      "Método de Optimización": "Optimización Bayesiana (Optuna TPE)",
+      "Mejor F1-Score (CV)": 0.8807,
+      "Mejores Hiperparámetros": "{'n_estimators': 250, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 1}",
+      "Tiempo (s)": 86.72
+    },
+    {
+      "Modelo": "Random Forest (Bagging)",
+      "Método de Optimización": "Línea base (comparación inicial)",
+      "Mejor F1-Score (CV)": 0.8803,
       "Mejores Hiperparámetros": "{'n_estimators': 150, 'max_depth': None, 'min_samples_split': 2}",
-      "Tiempo (s)": 22.67
+      "Tiempo (s)": 3.84
     },
     {
       "Modelo": "Random Forest (Bagging)",
-      "Método de Optimización": "Optimización Bayesiana (Optuna TPE)",
-      "Mejor F1-Score (CV)": 0.8739,
-      "Mejores Hiperparámetros": "{'n_estimators': 200, 'max_depth': 18, 'min_samples_split': 4, 'min_samples_leaf': 1}",
-      "Tiempo (s)": 27.57
+      "Método de Optimización": "GridSearchCV",
+      "Mejor F1-Score (CV)": 0.8803,
+      "Mejores Hiperparámetros": "{'max_depth': None, 'min_samples_split': 2, 'n_estimators': 150}",
+      "Tiempo (s)": 44.07
     }
   ],
   "best_params": {
     "n_estimators": 300,
-    "max_depth": 4,
-    "learning_rate": 0.1014,
-    "subsample": 0.8685,
-    "colsample_bytree": 0.7116
+    "max_depth": 5,
+    "learning_rate": 0.1266,
+    "subsample": 0.9278,
+    "colsample_bytree": 0.7052
   },
   "test_metrics": {
-    "Accuracy": 0.9654,
-    "Precision": 0.8948,
-    "Recall": 0.8893,
-    "F1-Score": 0.8921,
-    "ROC-AUC": 0.9911
-  }
+    "Accuracy": 0.9657,
+    "Precision": 0.9,
+    "Recall": 0.8852,
+    "F1-Score": 0.8926,
+    "ROC-AUC": 0.9912
+  },
+  "final_cv_vs_test": [
+    {
+      "Métrica": "Accuracy",
+      "CV media (70%)": 0.9723,
+      "CV DE": 0.0034,
+      "Prueba (30%)": 0.9657,
+      "Prueba - CV": -0.0066
+    },
+    {
+      "Métrica": "Precision",
+      "CV media (70%)": 0.9226,
+      "CV DE": 0.0159,
+      "Prueba (30%)": 0.9,
+      "Prueba - CV": -0.0226
+    },
+    {
+      "Métrica": "Recall",
+      "CV media (70%)": 0.9042,
+      "CV DE": 0.0267,
+      "Prueba (30%)": 0.8852,
+      "Prueba - CV": -0.019
+    },
+    {
+      "Métrica": "F1-Score",
+      "CV media (70%)": 0.9129,
+      "CV DE": 0.012,
+      "Prueba (30%)": 0.8926,
+      "Prueba - CV": -0.0203
+    },
+    {
+      "Métrica": "ROC-AUC",
+      "CV media (70%)": 0.9932,
+      "CV DE": 0.0019,
+      "Prueba (30%)": 0.9912,
+      "Prueba - CV": -0.002
+    }
+  ],
+  "confusion_matrix": {
+    "tn": 2500,
+    "fp": 48,
+    "fn": 56,
+    "tp": 432
+  },
+  "feature_importance": [
+    {
+      "Variable": "Total_Trans_Ct",
+      "Ganancia (suma 1)": 0.21860000491142273,
+      "Caída F1 (permutación)": 0.4943,
+      "DE": 0.0122
+    },
+    {
+      "Variable": "Total_Revolving_Bal",
+      "Ganancia (suma 1)": 0.1054999977350235,
+      "Caída F1 (permutación)": 0.0423,
+      "DE": 0.0072
+    },
+    {
+      "Variable": "Avg_Ticket_Size",
+      "Ganancia (suma 1)": 0.094200000166893,
+      "Caída F1 (permutación)": null,
+      "DE": null
+    },
+    {
+      "Variable": "Total_Relationship_Count",
+      "Ganancia (suma 1)": 0.08089999854564667,
+      "Caída F1 (permutación)": 0.056,
+      "DE": 0.0066
+    },
+    {
+      "Variable": "Total_Trans_Amt",
+      "Ganancia (suma 1)": 0.07970000058412552,
+      "Caída F1 (permutación)": 0.266,
+      "DE": 0.011
+    },
+    {
+      "Variable": "Marital_Status",
+      "Ganancia (suma 1)": 0.0544000007212162,
+      "Caída F1 (permutación)": -0.0016,
+      "DE": 0.0032
+    },
+    {
+      "Variable": "Inactivity_Contact_Ratio",
+      "Ganancia (suma 1)": 0.04769999906420708,
+      "Caída F1 (permutación)": null,
+      "DE": null
+    },
+    {
+      "Variable": "Months_Inactive_12_mon",
+      "Ganancia (suma 1)": 0.04450000077486038,
+      "Caída F1 (permutación)": 0.0166,
+      "DE": 0.0054
+    },
+    {
+      "Variable": "Total_Ct_Chng_Q4_Q1",
+      "Ganancia (suma 1)": 0.042899999767541885,
+      "Caída F1 (permutación)": 0.027,
+      "DE": 0.0071
+    },
+    {
+      "Variable": "Gender",
+      "Ganancia (suma 1)": 0.03629999980330467,
+      "Caída F1 (permutación)": 0.004,
+      "DE": 0.0024
+    },
+    {
+      "Variable": "Contacts_Count_12_mon",
+      "Ganancia (suma 1)": 0.03280000016093254,
+      "Caída F1 (permutación)": 0.0157,
+      "DE": 0.0037
+    },
+    {
+      "Variable": "Total_Amt_Chng_Q4_Q1",
+      "Ganancia (suma 1)": 0.027699999511241913,
+      "Caída F1 (permutación)": 0.037,
+      "DE": 0.0057
+    },
+    {
+      "Variable": "Dependent_count",
+      "Ganancia (suma 1)": 0.027000000700354576,
+      "Caída F1 (permutación)": -0.0007,
+      "DE": 0.0015
+    },
+    {
+      "Variable": "Products_Per_Year",
+      "Ganancia (suma 1)": 0.023000000044703484,
+      "Caída F1 (permutación)": null,
+      "DE": null
+    },
+    {
+      "Variable": "Customer_Age",
+      "Ganancia (suma 1)": 0.01720000058412552,
+      "Caída F1 (permutación)": 0.0075,
+      "DE": 0.0035
+    },
+    {
+      "Variable": "Avg_Utilization_Ratio",
+      "Ganancia (suma 1)": 0.01679999940097332,
+      "Caída F1 (permutación)": 0.0041,
+      "DE": 0.0035
+    },
+    {
+      "Variable": "Card_Category",
+      "Ganancia (suma 1)": 0.012000000104308128,
+      "Caída F1 (permutación)": 0.0002,
+      "DE": 0.0007
+    },
+    {
+      "Variable": "Income_Category",
+      "Ganancia (suma 1)": 0.011900000274181366,
+      "Caída F1 (permutación)": -0.0014,
+      "DE": 0.0026
+    },
+    {
+      "Variable": "Months_on_book",
+      "Ganancia (suma 1)": 0.010499999858438969,
+      "Caída F1 (permutación)": 0.0025,
+      "DE": 0.0013
+    },
+    {
+      "Variable": "Credit_Limit",
+      "Ganancia (suma 1)": 0.009200000204145908,
+      "Caída F1 (permutación)": 0.0037,
+      "DE": 0.0065
+    },
+    {
+      "Variable": "Education_Level",
+      "Ganancia (suma 1)": 0.0071000000461936,
+      "Caída F1 (permutación)": 0.0001,
+      "DE": 0.0038
+    }
+  ]
 }
