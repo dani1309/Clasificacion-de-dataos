@@ -82,12 +82,15 @@ with tab1:
 
     with col3:
         st.markdown("##### 3. Comportamiento Transaccional")
-        total_revolving_bal = st.number_input("Saldo Rotativo Total USD (Total_Revolving_Bal)", min_value=0, max_value=3000, value=1100, step=100)
+        # El saldo rotativo no puede superar el cupo del cliente
+        max_revolving_bal = min(3000, int(credit_limit))
+        total_revolving_bal = st.number_input("Saldo Rotativo Total USD (Total_Revolving_Bal)", min_value=0, max_value=max_revolving_bal, value=min(1100, max_revolving_bal), step=100, help="No puede superar el Credit_Limit.")
         total_amt_chng = st.number_input("Cambio en Monto Q4 vs Q1 (Total_Amt_Chng_Q4_Q1)", min_value=0.0, max_value=3.5, value=0.75, step=0.05)
         total_trans_amt = st.number_input("Monto Total Transado 12m USD (Total_Trans_Amt)", min_value=100, max_value=25000, value=3800, step=200)
         total_trans_ct = st.slider("Cantidad de Transacciones 12m (Total_Trans_Ct)", 1, 150, 62)
         total_ct_chng = st.number_input("Cambio en Frecuencia Q4 vs Q1 (Total_Ct_Chng_Q4_Q1)", min_value=0.0, max_value=3.8, value=0.70, step=0.05)
-        avg_util_ratio = st.slider("Ratio Promedio de Utilización (Avg_Utilization_Ratio)", 0.0, 1.0, round(min(total_revolving_bal / max(credit_limit, 1.0), 1.0), 3), step=0.01)
+        avg_util_ratio = round(total_revolving_bal / credit_limit, 3)
+        st.metric("Ratio Promedio de Utilización (Avg_Utilization_Ratio)", f"{avg_util_ratio:.3f}", help="Se calcula como Total_Revolving_Bal / Credit_Limit.")
 
     if st.button("🔍 Evaluar Riesgo de Abandono (Churn)", type="primary", use_container_width=True):
         input_df = pd.DataFrame([{
@@ -153,8 +156,21 @@ with tab2:
         batch_df = pd.read_csv(uploaded_file)
         raw_cols = bundle["raw_columns"]
         missing_c = [c for c in raw_cols if c not in batch_df.columns]
+        # Estas columnas deben ser mayores que 0, los valores vacíos o no numéricos también se rechazan
+        filas_invalidas = {}
+        for col in ["Months_on_book", "Total_Trans_Ct"]:
+            if col not in missing_c:
+                invalidas = batch_df.index[~(pd.to_numeric(batch_df[col], errors="coerce") > 0)]
+                if len(invalidas) > 0:
+                    filas_invalidas[col] = invalidas
         if missing_c:
             st.error(f"Faltan las siguientes columnas requeridas en el CSV: {missing_c}")
+        elif filas_invalidas:
+            for col, invalidas in filas_invalidas.items():
+                # El número de fila cuenta el encabezado del CSV como fila 1
+                ejemplos = ", ".join(str(i + 2) for i in invalidas[:10])
+                st.error(f"La columna {col} debe ser mayor que 0 en todos los clientes. Filas con valores inválidos: {len(invalidas)} (primeras filas del CSV: {ejemplos}).")
+            st.info("No se generaron predicciones. Corrija el archivo y vuelva a cargarlo.")
         else:
             batch_preds = pipeline.predict(batch_df[raw_cols])
             batch_probs = pipeline.predict_proba(batch_df[raw_cols])[:, 1]
