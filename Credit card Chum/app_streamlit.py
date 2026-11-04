@@ -24,7 +24,7 @@ best_params = bundle["best_params"]
 st.title("💳 Sistema Inteligente de Predicción de Abandono de Clientes (Credit Card Churn)")
 st.markdown(
     """
-    **Proyecto Final de Minería de Datos — Metodología CRISP-DM**  
+    **Proyecto Final de Minería de Datos, Metodología CRISP-DM**  
     Esta aplicación interactiva utiliza el **`Pipeline` de Machine Learning ganador (XGBoost Optimizado + SMOTE + Preprocesador)** para estimar en tiempo real la probabilidad de que un cliente cancele su tarjeta de crédito (*Attrited Customer*).
     """
 )
