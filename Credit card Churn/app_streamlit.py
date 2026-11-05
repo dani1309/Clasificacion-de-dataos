@@ -20,6 +20,8 @@ st.set_page_config(
 def load_model():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     model_path = os.path.join(base_dir, "modelo_churn_pipeline.joblib")
+    if not os.path.exists(model_path):
+        model_path = os.path.join(base_dir, "Credit card Churn", "modelo_churn_pipeline.joblib")
     return joblib.load(model_path)
 
 bundle = load_model()
